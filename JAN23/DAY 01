@@ -1,0 +1,15 @@
+WORD PATTERN
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        l = list(s.split(" "))     # Created a list of all the diffrent words in s
+        if len(l)!=len(pattern) or len(set(pattern))!=len(set(l)):
+            return False
+        else:
+            d = {}      # This hash map will map the letter from pattern with the words in list l
+            for i in range(len(pattern)):
+                if pattern[i] not in d:
+                    d[pattern[i]] = l[i]
+                else:
+                    if d[pattern[i]] != l[i]:
+                        return False
+            return True
