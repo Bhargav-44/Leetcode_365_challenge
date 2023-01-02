@@ -1,0 +1,28 @@
+DETECT CAPITAL
+
+# I have first checked whether the first char is upper or not 
+# If it is upper then I've checked the second char
+# If is it is upper then all the remaining characters should be in upper
+# Otherwise remaining characters should be in lower
+# At the start if first char is lower then remaining characters should be lower
+
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        if len(word)==1:
+            return True
+        else:
+            if word[0].isupper():
+                if word[1].isupper():
+                    for i in range(2,len(word)):
+                        if word[i].islower():
+                            return False
+                else:
+                    for i in range(2,len(word)):
+                        if word[i].isupper():
+                            return False
+            else:
+                for i in range(1,len(word)):
+                    if word[i].isupper():
+                        return False
+            return True
+            
