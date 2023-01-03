@@ -1,0 +1,15 @@
+DELETE COLUMNS TO MAKE SORTED
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        a = len(strs[0])
+        c = 0
+        i = 0
+        while i!=a:
+            for j in range(len(strs)-1):
+                if strs[j][i] <= strs[j+1][i]:
+                    continue
+                else:
+                    c+=1
+                    break
+            i+=1
+        return c
