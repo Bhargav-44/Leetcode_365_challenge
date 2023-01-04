@@ -1,0 +1,19 @@
+MINIMUM ROUNDS TO COMPLETE ALL TASKS
+
+class Solution:
+    def minimumRounds(self, tasks: List[int]) -> int:
+        c = collections.Counter(tasks)    # creates a hash map with difficulties as val and count as the keys
+        tot = 0
+        
+        for k in c.keys():
+            v = c[k]
+            if v==1:
+                return -1
+            else:
+                if v%3==0:
+                    tot+=v//3
+                else:
+                    tot+=(v//3)+1
+        return tot
+
+        
