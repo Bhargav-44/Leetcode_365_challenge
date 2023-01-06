@@ -1,0 +1,29 @@
+MAXIMUM ICE CREAM BARS
+
+PYTHON:
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        costs.sort()
+        tot = 0
+        for i in costs:
+            if i<=coins:
+                tot+=1
+                coins-=i
+        return tot
+        
+        
+C++:
+class Solution {
+public:
+    int maxIceCream(vector<int>& costs, int coins) {
+        sort(costs.begin(), costs.end());
+        int tot = 0;
+        for(auto x : costs){
+            if (x<=coins){
+                tot++;
+                coins-=x;
+            }
+        }
+        return tot;
+    }
+};
