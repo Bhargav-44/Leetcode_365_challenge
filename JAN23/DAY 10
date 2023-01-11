@@ -1,0 +1,24 @@
+MINIMUM TIME TO COLLECT ALL APPLES
+class Solution:
+    def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
+        d = {}
+        for i in range(len(edges)):
+            if edges[i][0] not in d:
+                d[edges[i][0]] = [edges[i][1]]
+            else:
+                d[edges[i][0]].append(edges[i][1])
+            if edges[i][1] not in d:
+                d[edges[i][1]] = [edges[i][0]]
+            else:
+                d[edges[i][1]].append(edges[i][0])
+        
+        def dfs(curr, par):
+            time = 0
+            for c in d[curr]:
+                if c==par:
+                    continue
+                childTime = dfs(c, curr)
+                if childTime or hasApple[c]:
+                    time += 2 + childTime
+            return time
+        return dfs(0, -1)
